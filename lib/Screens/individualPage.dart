@@ -1,4 +1,3 @@
-
 import 'package:chatapp/Model/chatModel.dart';
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -170,7 +169,12 @@ class _IndividualPageState extends State<IndividualPage> {
                                       IconButton(
                                         icon: Icon(Icons.attach_file),
                                         onPressed: () {
-                                          showModalBottomSheet(context: context, builder: (builder)=>bottomsheet());
+                                          showModalBottomSheet(
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              context: context,
+                                              builder: (builder) =>
+                                                  bottomsheet());
                                         },
                                       ),
                                       IconButton(
@@ -220,8 +224,72 @@ class _IndividualPageState extends State<IndividualPage> {
       ),
     );
   }
-  Widget bottomsheet(){
+
+  Widget bottomsheet() {
     return Container(
+      height: 278,
+      width: MediaQuery.of(context).size.width,
+      child: Card(
+        margin: EdgeInsets.all(18),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  iconcreation(
+                      Icons.insert_drive_file, Colors.blue, "Document"),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  iconcreation(Icons.camera, Colors.pink, "Camera"),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  iconcreation(Icons.insert_photo, Colors.purple, "Gallery"),
+                ],
+              ),
+              SizedBox(height: 30,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  iconcreation(
+                      Icons.headset, Colors.orange, "Audio"),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  iconcreation(Icons.location_pin, Colors.pink, "Location"),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  iconcreation(Icons.person, Colors.blue, "Contact"),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget iconcreation(IconData icon, Color color, String text) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 28,
+          child: Icon(
+            icon,
+            size: 27,
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(height: 5,),
+        Text(text,style: TextStyle(
+          fontSize: 12,
+        ),),
+      ],
     );
   }
 
